@@ -62,6 +62,7 @@ We are plotting the density plot of Ex-showrrom_Price so we can see how it is di
 ![a1](https://user-images.githubusercontent.com/105349293/170811814-d794d9a6-9d27-461c-aa97-747561fbe880.png)
 
 WHY ARE WE PLOTTING THIS?
+
 The main reason why we are plotting this graph is to find the nature of its distribution so when we fill the missing data, we can take a hint that which filler is to be used. Like if we have skewed data, then we will use median as filler.
 ## OBSERVATIONS:
 -We see that the above graph is skewed, so maybe the appropriate distribution can be log or log normal distribution.
@@ -134,12 +135,19 @@ So i created a heat map which looks like this:
 ![a2](https://user-images.githubusercontent.com/105349293/170816228-8c8ac2a6-b41f-47f4-b14a-eaba64dc4289.png)
 ## OBSERVATIONS:
 A lot of features seems to be correlated with each other but some of them such as Displacement/Cylinder may just indicate a price inflation over the years. As for Length/Width, if the length of the car is increased then the width is also to be increased to maintain the shape of the car and similar is the case with Length/Wheelbase .
+
 Now for the ones which are less obvious we can see that:
-There is a strong negative corelation between doors and cylinders of the car. But I really can't explain what it is.
-There is an interesting corelation between Fuel_Tank_Capacity and Length; Fuel_Tank_Capacity and Kerbs_Weight; Fuel_Tank_Capacity and Displacement, well this makes sense though.
+
+-There is a strong negative corelation between doors and cylinders of the car. But I really can't explain what it is.
+
+-There is an interesting corelation between Fuel_Tank_Capacity and Length; Fuel_Tank_Capacity and Kerbs_Weight; Fuel_Tank_Capacity and Displacement, well this makes sense though.
+
 We can also relate Kerbs_Weight with Gross_vehicle_Weight
+
 It is interesting to note that Highway_Milage has negative corelation with Displacement,Fuel_Tank_Capacity and Length.
+
 There is of course a lot more to discover but I can't really explain the rest of the features except the most obvious ones.
+
 We can conclude that, by essence, some of those features may be combined between each other in order to reduce the number of features (like: Fuel_Tank_Capacity,Kerbs_Weight,Length,Displacement) and others indicates that people expect multiples features to be packaged together.
 
 ## 2.4)Quantitative to Quantitative relationship-
@@ -185,39 +193,59 @@ Since I am using r squared method to check accuracy, I will apply feature scalli
 
 ## 3a) MULTIPLE LINEAR REGRESSION
 I will use backward elimination method.
+
 BACKWARD ELIMINATION-
+
 STEP 1) Select a significance level to stay in the model (eg SL=0.05)-default
+
 STEP 2) Fit the full model with all possible predictors.
+
 (NOW START ELIMINATING)
+
 STEP 3) Consider the predictor with the highest P-value. If P>SL go to step 4, else go to FIN. (i.e model ie ready)
+
 STEP 4) Remove the predictors.
+
 STEP 5) Fit the model with the remanining predictors.
+
 STEP 6) Repeat Step 3.
+
 REPEAT THIS PROCESS TILL THE HIGHEST P-VALUE IS LESS THAN SL.
+
 
 I have used sklearn libraries as thy cover these calculations.
 After applying this model we see that accuracy score was:0.7045010813859726
 
 ## 3b) DECISION TREE REGRESSION
 -Once the code is run, the scatterplot will be split up into two segments. So an algorithm will create splits using the data.
+
 -Now how and where the splits are conducted is determined by the algorithm and it actually involves looking at something called the information entropy.
+
 -The algorithm can handle this data and it is finding the optimal splits of our dataset into these leaves and the final leaves are called terminal leaves.
+
 ![a3](https://user-images.githubusercontent.com/105349293/170817854-db4dd08b-d4a1-4d07-8c09-ac1ea6e49323.jpeg)
 
 After applying this model we see that accuracy score was:0.8982186246276317
 
 ## 3c) RANDOM FOREST REGRESSION
 Random Forest regression is a version of ensemble learning.
+
 STEP 1)Pick at random k points from the training set.
+
 STEP 2)Build the decision tree associated to these k data points
+
 STEP 3)Choose the number Ntree of trees you want to build and repeat step 1 and 2.
+
 STEP 4)For a new data is it data point, make each one of your Ntree trees predict the value of Y to further data point in question and assign the new data point the average across all of the predicted  Y values, i.e, finally you use all of the all of this to predict so far and and you make each one of your entries predict the value of Y for the data point in question and assign the new date appoint the average of the predicted Y values.
+
 
 After applying this model we see that accuracy score was:0.9335385231311853
 
 ## FEATURE SCALLING
 Since only support vector machine requires feature scalling so I have applied this after these regression models.
+
 Features scaling simply consists of scaling all the variables or features to take value in same scale. We do this to prevent one feature to dominate the others.
+
 Features scaling is a technique used to get the mean and standard deviation of your features in order to perform the scaling.
 So if it is applied before the split then it will actually get the mean and standard deviation of all the values including the ones in the test set.Since the test it is supposed  to be new for the model applying it before will be will be like leakage of information on the test set.
 So we create a new array Y and convert it into array and split it and then apply feature scalling for SUPPORT VECTOR MACHINE MODEL.
@@ -234,23 +262,36 @@ So here we see that our random forest regression model gives the best result. So
 
 # 4) GROUPING CARS
 Lets try to group these cars on the basis of their similar features.
+
 Since it a big dataset, I have used K-Means clustering.
+
 STEP 1)Choose the number k of clusters.
+
 STEP 2)Select a random key points the centroid (not necessarily from the data set)
+
 STEP 3)Assign each data point to the closest centroid- that forms K clusters.
+
 STEP 4)Compute and place the new centroid of each cluster.
+
 STEP 5)Reassign each data point to the new closest centroid.If any reassignment took place go to step four, otherwise go to FIN.
 
 ## 4.1) Grouping different models of cars on the basis of luxury features and their ex-showroom price
 Now lets first group cars on the basis of their model,ex-showroom price and features like milage,etc which we initially dropped in input 4 because there were less than 30% in number(luxury features) so for this we will use the 'DF' dataset which we had initially created.
 
 So now we have a list of luxury features but we also need to add model and ex-showroom_price.
+
 But since we cant directly add these these features in 'DF' dataset so we will make an array of 'DF' dataset, an array of Ex-showroom_Price and an array of model features and then we will merge these arrays horizontally as they all are of shape(12,76,...)
+
 So I created an * array XX-array of models; shape- (1276,263)
+
                 * array Y-array of exshowrrom prices; shape-(1276,1)
+                
                 * array xx-array of fluxury features; shape-(1276, 24)
+               
+                
  The 'xx' array consisted of many strings and some features had different values throughout the datset. So i removed these features as they will not help in clustering of dataset. And i replaced the missing values(nan) with 0 and yes with 1.
- Then the merged the above three arrays horizontally as they have 1276 as a common dimension.(two at a time)
+ 
+ Then I merged the above three arrays horizontally as they have 1276 as a common dimension.(two at a time)
  
  VISVAULISATION OF CLUSTERS:
 <img width="1095" alt="a4" src="https://user-images.githubusercontent.com/105349293/170819585-425b1b09-1126-41db-bd67-013d21b2c787.png">
