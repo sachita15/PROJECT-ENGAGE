@@ -65,6 +65,7 @@ WHY ARE WE PLOTTING THIS?
 The main reason why we are plotting this graph is to find the nature of its distribution so when we fill the missing data, we can take a hint that which filler is to be used. Like if we have skewed data, then we will use median as filler.
 ## OBSERVATIONS:
 -We see that the above graph is skewed, so maybe the appropriate distribution can be log or log normal distribution.
+
 -Here density represents frequency of Ex-Showroom_Price
 
 If we try to use describe on our dataset, we will see that a few values have appered. But we know there is a lot of numerical data which is the form of strings. So we will convert these strings into dtype float and then fill the missing values.
@@ -73,8 +74,10 @@ So we will go on step by step.
 # 2) DATA VISUALIZATION
 
 ## 2.1) ANALYZYING NON NUMERICAL DATA-
-When we describe the complete dataset, we can see that maximum models are of maruti suzuki company
+When we describe the complete dataset, we can see that maximum models are of maruti suzuki company.
+
 In non numerical features only a few features have non null elements. So we will plot these festures and see what we can find out.
+
 NOTE: We plot 'Make AND Ex-Showroom_Price' ; 'Body_Type AND Ex-Showroom_Price' and 'Drivetrain AND Ex-Showroom_Price'.
 While plotting Body_Type AND Ex-Showroom_Price we saw that we could not deduce much from boxplot so we used catplot instead.
 ## OBSERVATIONS:
