@@ -119,8 +119,11 @@ Since we are done with making a numerical dataset. Now we will replace the missi
 
 ## 2.2 b)CORELATION:
 Generally we use bivarete plots to find relation between different features. But swince we have a lot of features I thought using corelation will be a better way to find which features are strongly related to the dependent variable.
+
 So we conclude that there are 2 strongly correlated values with Ex-Showroom_Price:
+
 Cylinders       0.817001
+
 Displacement    0.793142
 
 Then I created a dataset containing just the attributes 'df_attr' , i.e it doesnot contains model of cars and tried to plot a bivarte plot for this dataset.
