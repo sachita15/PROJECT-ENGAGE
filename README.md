@@ -1,38 +1,58 @@
 ### PROJECT-ENGAGE
 In my project I am using the dataset given in the acehacker site itself.
 CONTENTS:
+
 1)DATA PROCESSING:
+
   -1.1) CLEANING OF DATA
+  
   -1.2) DENSITY PLOT
+  
 2) DATA VISUALIZATION:
+
    -2.1)ANALYZYING NON NUMERICAL DATA
+   
    -2.2)ANALYZYING THE NUMERICAL DATA:-
+   
         *2.2 a) DATA PROCESSING
+        
         *2.2 b)CORELATION
+        
    -2.3)FEATURE TO FEATURE RELATION
+   
    -2.4)Quantitative to Quantitative relationship
+   
    -2.5)Categorical to Quantitative relationship
+   
 3) APPLYING REGRESSION MODELS:
+
   -3a) MULTIPLE LINEAR REGRESSION
+  
   -3b) DECISION TREE REGRESSION
+  
   -3c) RANDOM FOREST REGRESSION
+  
   -3d) SUPPORT VECTOR MACHINE
+  
 4) GROUPING CARS:
+
   -4.1) Grouping different models of cars on the basis of luxury features and their ex-showroom price
+  
   -4.2) Grouping different models of cars on the basis of thier numerical features
+  
   
  IN MY JUPYTER NOTEBOOK I WRITTEN CODE FOR ALL THE GRAPHS THAT I HAVE ADDED HERE!
   
-### 1)DATA PROCESSING: 
+## 1)DATA PROCESSING: 
 After including libraries and importing dataset we will begin with cleaning of data.
 
-## 1.1) CLEANING OF DATA-
+# 1.1) CLEANING OF DATA-
 By closely looking at the dataset we can see that many columns have same values throughout, like for Fuel_System it is Injection. So it is better to remove these features.
 We can also see that a lot of data is missing. So our next step will be to remove features which have missing value greater than 30%.
 If you closely look at these features, we can see that these can be described as luxury features as these are not present in every car, but the greater the price, the greater these features will be available. So we will store these features in a new dataset 'DF'.
 Now if we look at our dataset, we can see that only Ex-showrrom_Price can be treated as dependent varaible. So we will shift it to the last column.
 
-## 1.2) DENSITY PLOT-
+# 1.2) DENSITY PLOT-
 By looking at the density plot of a feature we can find out the probability of finding a getting a value.
 We are plotting the density plot of Ex-showrrom_Price so we can see how it is distruibuted. We can also find the probability of getting a value of Ex-showrrom_Price by looking at this graph.
 ![a1](https://user-images.githubusercontent.com/105349293/170811814-d794d9a6-9d27-461c-aa97-747561fbe880.png)
@@ -45,9 +65,9 @@ The main reason why we are plotting this graph is to find the nature of its dist
 If we try to use describe on our dataset, we will see that a few values have appered. But we know there is a lot of numerical data which is the form of strings. So we will convert these strings into dtype float and then fill the missing values.
 So we will go on step by step. 
 
-### 2) DATA VISUALIZATION
+## 2) DATA VISUALIZATION
 
-## 2.1) ANALYZYING NON NUMERICAL DATA-
+# 2.1) ANALYZYING NON NUMERICAL DATA-
 When we describe the complete dataset, we can see that maximum models are of maruti suzuki company
 In non numerical features only a few features have non null elements. So we will plot these festures and see what we can find out.
 NOTE: We plot 'Make AND Ex-Showroom_Price' ; 'Body_Type AND Ex-Showroom_Price' and 'Drivetrain AND Ex-Showroom_Price'.
@@ -60,7 +80,7 @@ While plotting Body_Type AND Ex-Showroom_Price we saw that we could not deduce m
 -Convertible has only standard edition with expensive cars
 -rwd wheel drive vehicle have expensive prices
 
-## 2.2) ANALYZYING THE NUMERICAL DATA-
+# 2.2) ANALYZYING THE NUMERICAL DATA-
 Before we analyze our numerical data we need to clean the data and fill missing values.
 
 # 2.2 a) DATA PROCESSING:
@@ -87,7 +107,7 @@ We can clearly identify some relationships. Most of them seems to have a linear 
 
 Even after further cleaning our data i found out that displacement and cylinders are strongly corelated to the ex showroom price.
 
-## 2.3)FEATURE TO FEATURE RELATION-
+# 2.3)FEATURE TO FEATURE RELATION-
 Trying to plot all the numerical features in a seaborn pairplot will take us too much time and will be hard to interpret. We can try to see if some variables are linked between each other and then explain their relation.
 So i created a heat map which looks like this:
 ![a2](https://user-images.githubusercontent.com/105349293/170816228-8c8ac2a6-b41f-47f4-b14a-eaba64dc4289.png)
@@ -101,14 +121,14 @@ It is interesting to note that Highway_Milage has negative corelation with Displ
 There is of course a lot more to discover but I can't really explain the rest of the features except the most obvious ones.
 We can conclude that, by essence, some of those features may be combined between each other in order to reduce the number of features (like: Fuel_Tank_Capacity,Kerbs_Weight,Length,Displacement) and others indicates that people expect multiples features to be packaged together.
 
-## 2.4)Quantitative to Quantitative relationship-
+# 2.4)Quantitative to Quantitative relationship-
 Let's now examine the quantitative features of our dataframe and how they relate to the Ex-Showroom_Price which is also quantitative (hence the relation Quantitative -> Quantitative)
 Now we know that all the elements in df_attr are quantitative elements. And we have already analysed these features.
 So lets analyze Displacement and Cylinders with Ex-showroom_Price
 ![a3](https://user-images.githubusercontent.com/105349293/170816379-dcc40b80-7663-420f-a89a-be79c94a0a4a.png)
 From the above graph we can conclude that cylinders have a bigger spread area than displacement. So we can conclude that if more cylinders are there then the cost will be more and cylinders will affect the cost more than displacement.
 
-## 2.5)Categorical to Quantitative relationship-
+# 2.5)Categorical to Quantitative relationship-
 Since all of the features in df_attr were quantitative elements so now all the remaining elements are categorical data.
 Here I have converted Ex-showroom_Price to dtype str so i can analyze it with categorical data
 Now here we will begin by creating a new dataset 'dataset_categorical' , which will contain all feature of dtype object.
@@ -117,7 +137,7 @@ Here we can only plot a few of them as many of them have missing values and sinc
 - FROM PLOT Ex-showroom_Price VS Fuel_type we can see that fuel price is influencing exshowroom price like models with CNG,Electric fuel type will have less price
 - From PLOT POWER VS MODEL we see how price rises when power is increased. Also we see that for a particular model, all its varaint have same power. 
 
-## CONCLUSION-
+# CONCLUSION-
 Till now we saw that the ex-showroom price is strongly corelated with cylinders and displacement. But it is interesting to note that for a particular model say TATA-Nano Genx, its different varaints have same cylinders and displacement(ground clearance). But their price varies on the basis of milage,ARAI_Certified_Mileage_for_CNG, 3_Point_Seat-Belt_in_Middle_Rear_Seat, Ambient_Lightning, Cargo/Boot_Lights, Drive_Modes, High_Speed_Alert_System, Lane_Watch_Camera/_Side_Mirror_Camera, Passenger_Side_Seat-Belt_Reminder, Voice_Recognition, Walk_Away_Auto_Car_Lock, Compression_Ratio, Other_Specs, Other_specs, Android_Auto, Apple_CarPlay, Tyre_Pressure_Monitoring_System, Recommended_Tyre_Pressure, Heated_Seats, Paddle_Shifters, Engine_Type, USB_Ports, Heads-Up_Display, Welcome_Lights, Battery, Electric_Range.
 
 Now these were the features which we removed in the beginning because they had more than 30% missing values.
@@ -126,23 +146,23 @@ Now these were the features which we removed in the beginning because they had m
 
 As the price of the car increases, so does its features.
 
-### 3) APPLYING REGRESSION MODELS
+## 3) APPLYING REGRESSION MODELS
 We can also use our model to predict the ex-showroom price of a car with help of this dataset. So lets apply some machine learning models and compare which model gives better results.
 
 Here I didnt apply linear regression model and polynomial linear regression model because the dataset is complex and we have more that one independent variable.
 
-## IMPORTING DATASET
+# IMPORTING DATASET
 HERE WE WILL USE 'dataset_num' AS OUR DATASET.
 x array will consist of all the independent variables in form of array. So we will drop 'Ex-showroom_Price' from it.
 y array will consist of dependent variable , i.e 'Ex-showroom_Price'
 
-## Splitting the dataset into the Training set and Test set
+# Splitting the dataset into the Training set and Test set
 We will divide our dataset into training dataset and test dataset. 
 Test set is going to be the new dataset on which we will evaluate our model which means that we will train our data on train set
 
 Since I am using r squared method to check accuracy, I will apply feature scalling only for SUPPORT VECTOR MACHINE MODEL, as for other models it increases the chance of error.
 
-## 3a) MULTIPLE LINEAR REGRESSION
+# 3a) MULTIPLE LINEAR REGRESSION
 I will use backward elimination method.
 BACKWARD ELIMINATION-
 STEP 1) Select a significance level to stay in the model (eg SL=0.05)-default
@@ -157,7 +177,7 @@ REPEAT THIS PROCESS TILL THE HIGHEST P-VALUE IS LESS THAN SL.
 I have used sklearn libraries as thy cover these calculations.
 After applying this model we see that accuracy score was:0.7045010813859726
 
-## 3b) DECISION TREE REGRESSION
+# 3b) DECISION TREE REGRESSION
 -Once the code is run, the scatterplot will be split up into two segments. So an algorithm will create splits using the data.
 -Now how and where the splits are conducted is determined by the algorithm and it actually involves looking at something called the information entropy.
 -The algorithm can handle this data and it is finding the optimal splits of our dataset into these leaves and the final leaves are called terminal leaves.
@@ -165,7 +185,7 @@ After applying this model we see that accuracy score was:0.7045010813859726
 
 After applying this model we see that accuracy score was:0.8982186246276317
 
-## 3c) RANDOM FOREST REGRESSION
+# 3c) RANDOM FOREST REGRESSION
 Random Forest regression is a version of ensemble learning.
 STEP 1)Pick at random k points from the training set.
 STEP 2)Build the decision tree associated to these k data points
@@ -174,14 +194,14 @@ STEP 4)For a new data is it data point, make each one of your Ntree trees predic
 
 After applying this model we see that accuracy score was:0.9335385231311853
 
-## FEATURE SCALLING
+# FEATURE SCALLING
 Since only support vector machine requires feature scalling so I have applied this after these regression models.
 Features scaling simply consists of scaling all the variables or features to take value in same scale. We do this to prevent one feature to dominate the others.
 Features scaling is a technique used to get the mean and standard deviation of your features in order to perform the scaling.
 So if it is applied before the split then it will actually get the mean and standard deviation of all the values including the ones in the test set.Since the test it is supposed  to be new for the model applying it before will be will be like leakage of information on the test set.
 So we create a new array Y and convert it into array and split it and then apply feature scalling for SUPPORT VECTOR MACHINE MODEL.
 
-## 3d) SUPPORT VECTOR MACHINE
+# 3d) SUPPORT VECTOR MACHINE
 In this model we have to apply feature  scaling because in SVR model there is not this explicit explicit equation of the dependent variable with respect to features and mostly there are not those coefficient multiplying each of the features and therefore not compensating with lower values for the features taking higher values.
 The SVR has an implicit equation of the dependent variable with respect to features so we don't have such coefficient and we will have to apply features scalling.
 
@@ -191,7 +211,7 @@ After applying this model we see that accuracy score was:0.704597806735551
 So here we see that our random forest regression model gives the best result. So we can conclude that from buisness point of view when we are just looking for higher preformance with less need for interpretation we can use RANDOM FOREST REGRESSION MODEL.
 
 
-### 4) GROUPING CARS
+## 4) GROUPING CARS
 Lets try to group these cars on the basis of their similar features.
 Since it a big dataset, I have used K-Means clustering.
 STEP 1)Choose the number k of clusters.
@@ -200,7 +220,7 @@ STEP 3)Assign each data point to the closest centroid- that forms K clusters.
 STEP 4)Compute and place the new centroid of each cluster.
 STEP 5)Reassign each data point to the new closest centroid.If any reassignment took place go to step four, otherwise go to FIN.
 
-## 4.1) Grouping different models of cars on the basis of luxury features and their ex-showroom price
+# 4.1) Grouping different models of cars on the basis of luxury features and their ex-showroom price
 Now lets first group cars on the basis of their model,ex-showroom price and features like milage,etc which we initially dropped in input 4 because there were less than 30% in number(luxury features) so for this we will use the 'DF' dataset which we had initially created.
 
 So now we have a list of luxury features but we also need to add model and ex-showroom_price.
@@ -217,7 +237,7 @@ So I created an * array XX-array of models; shape- (1276,263)
 # OBSERVATIONS:
 So on the basis of above graphs we can conclude that the cars in the given dataset can be grouped into 3 clusters. I guess which can be economical cars, budget luxury cars and luxury cars.
 
-## 4.2) Grouping different models of cars on the basis of thier numerical features
+# 4.2) Grouping different models of cars on the basis of thier numerical features
 For grouping on the basis of numerical data we will use 'dataset_num' as dataset.
  
 VISVAULISATION OF CLUSTERS
