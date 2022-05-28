@@ -8,7 +8,7 @@ CONTENTS:
   
   -1.2) DENSITY PLOT
   
-2) DATA VISUALIZATION:
+  2) DATA VISUALIZATION:
 
    -2.1)ANALYZYING NON NUMERICAL DATA
    
@@ -48,14 +48,19 @@ After including libraries and importing dataset we will begin with cleaning of d
 
 ## 1.1) CLEANING OF DATA-
 By closely looking at the dataset we can see that many columns have same values throughout, like for Fuel_System it is Injection. So it is better to remove these features.
+
 We can also see that a lot of data is missing. So our next step will be to remove features which have missing value greater than 30%.
+
 If you closely look at these features, we can see that these can be described as luxury features as these are not present in every car, but the greater the price, the greater these features will be available. So we will store these features in a new dataset 'DF'.
+
 Now if we look at our dataset, we can see that only Ex-showrrom_Price can be treated as dependent varaible. So we will shift it to the last column.
 
 ## 1.2) DENSITY PLOT-
 By looking at the density plot of a feature we can find out the probability of finding a getting a value.
 We are plotting the density plot of Ex-showrrom_Price so we can see how it is distruibuted. We can also find the probability of getting a value of Ex-showrrom_Price by looking at this graph.
+
 ![a1](https://user-images.githubusercontent.com/105349293/170811814-d794d9a6-9d27-461c-aa97-747561fbe880.png)
+
 WHY ARE WE PLOTTING THIS?
 The main reason why we are plotting this graph is to find the nature of its distribution so when we fill the missing data, we can take a hint that which filler is to be used. Like if we have skewed data, then we will use median as filler.
 ## OBSERVATIONS:
@@ -74,10 +79,15 @@ NOTE: We plot 'Make AND Ex-Showroom_Price' ; 'Body_Type AND Ex-Showroom_Price' a
 While plotting Body_Type AND Ex-Showroom_Price we saw that we could not deduce much from boxplot so we used catplot instead.
 ## OBSERVATIONS:
 -Lamborghini,Bentley,Ferrari,Aston Martin,Bugatti produces most expensive cars( Rs. 3,00,00,000 and above)
+
 -Volve Make, Jaguar,BMW,Maserati,Audi,Lexus make comparitevly less expensive luxury cars.
+
 -Other companies like Tata,Maruti etc produce budget models with lower prices.
+
 -Sports model are expensive in prices followed by convertible and coupe body style
+
 -Convertible has only standard edition with expensive cars
+
 -rwd wheel drive vehicle have expensive prices
 
 ## 2.2) ANALYZYING THE NUMERICAL DATA-
@@ -85,14 +95,22 @@ Before we analyze our numerical data we need to clean the data and fill missing 
 
 ## 2.2 a) DATA PROCESSING:
 Here we have three classes make,modeland varaint. So lets convert them into 1 ,i.e model and remove others and then apply one hot coding on model to convert it into numerical data.
+
 Now we see that most of our numerical data is in form of strings. So we will convert them into dtype float.
+
 -REMOVING STRINGS:
+
 So here we will remove the strings and then convert the numerical data from dtype object to float. eg- We have displacements as 624 cc; so here we will remove ' cc' from it and then convert it into float type.
+
 -CONVERTING THEM INTO FLOAT DType:
+
 We will convert them into dtype flote using astype.
+
 -CREATING A NUMERICAL DATASET:
+
 Now we will create a new dataset as 'dataset_num' which will contain all numerical data.
 -REPLACING NAN WITH MEDIAN;
+
 Since we are done with making a numerical dataset. Now we will replace the missing values in this dataset with median. Here we are replacing nan with median since this is a bigdata and when we plotted the density graph of ex-showroom_price we saw that the graph was skewed. And we know that for skewed graph, median filler is preferrable
 
 ## 2.2 b)CORELATION:
